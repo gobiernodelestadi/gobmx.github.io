@@ -1,0 +1,331 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+body{
+  overflow:hidden;
+  background:black;
+  font-family:Arial, sans-serif;
+  width:100vw;
+  height:100vh;
+}
+
+
+#introScreen{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #2b0000,
+      #120000,
+      #000000
+    );
+
+  z-index:9999;
+}
+
+.introContent{
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+.introContent h1{
+  font-size:80px;
+  margin-bottom:10px;
+
+  animation:
+    heartbeat 1.8s infinite;
+}
+
+.introContent h2{
+  font-size:32px;
+  margin-bottom:12px;
+
+  text-shadow:
+    0 0 10px #ff3300,
+    0 0 25px #ff1100;
+}
+
+.introContent p{
+  font-size:18px;
+  color:#d6d6d6;
+  margin-bottom:30px;
+}
+
+
+#enterBtn{
+  border:none;
+  outline:none;
+
+  padding:15px 35px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff2a00,
+      #ff6a00
+    );
+
+  color:white;
+
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.35s ease;
+
+  box-shadow:
+    0 0 20px rgba(255,60,0,0.7),
+    0 0 45px rgba(255,100,0,0.4);
+}
+
+#enterBtn:hover{
+  transform:
+    scale(1.08);
+
+  box-shadow:
+    0 0 30px rgba(255,80,0,0.9),
+    0 0 70px rgba(255,120,0,0.5);
+}
+
+
+#mainContent{
+  display:none;
+  width:100vw;
+  height:100vh;
+}
+
+
+canvas{
+  position:fixed;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  display:block;
+}
+
+.orbitText{
+  position: absolute;
+  color: #fff5f2;
+
+  font-size: clamp(
+    10px,
+    1vw,
+    10px
+  );
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+
+  transform:
+    translate(-50%, -50%);
+
+  text-shadow:
+    0 0 10px #ff3c00,
+    0 0 20px #ff6600,
+    0 0 40px #ff3300;
+}
+
+body::after{
+  content:'';
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,120,0,0.10),
+      transparent 70%
+    );
+
+  z-index:1;
+}
+
+.floatingItem{
+  position:fixed;
+
+  z-index:999;
+
+  pointer-events:none;
+  user-select:none;
+
+  text-shadow:
+    0 0 10px #ff66aa,
+    0 0 20px #ff3388,
+    0 0 40px #ff1177;
+
+  animation-timing-function:
+    linear;
+}
+
+
+@keyframes heartbeat{
+
+  0%{
+    transform:scale(1);
+  }
+
+  25%{
+    transform:scale(1.08);
+  }
+
+  50%{
+    transform:scale(1);
+  }
+
+  75%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+
+@media (max-width:768px){
+
+  .introContent h1{
+    font-size:65px;
+  }
+
+  .introContent h2{
+    font-size:26px;
+  }
+
+  .introContent p{
+    font-size:16px;
+  }
+
+  #enterBtn{
+    font-size:16px;
+    padding:14px 28px;
+  }
+
+  .orbitText{
+    font-size:12px;
+  }
+
+}
+
+
+@media (max-width:480px){
+
+  .introContent h1{
+    font-size:55px;
+  }
+
+  .introContent h2{
+    font-size:22px;
+  }
+
+  .introContent p{
+    font-size:14px;
+  }
+
+  #enterBtn{
+    font-size:15px;
+    padding:12px 24px;
+  }
+
+  .orbitText{
+    font-size:10px;
+  }
+
+}
+#lyrics{
+  position: fixed;
+
+  left: 50%;
+  bottom: 40px;
+
+  transform: translateX(-50%);
+
+  width: 92%;
+  max-width: 850px;
+
+  text-align: center;
+
+  color: white;
+  font-weight: bold;
+
+  font-size:
+    clamp(16px, 2vw, 28px);
+
+  line-height: 1.5;
+
+  z-index: 9999;
+
+  opacity: 1;
+
+  text-shadow:
+    0 0 10px #ff4d6d,
+    0 0 20px #ff2d55,
+    0 0 40px #ff1744;
+
+  pointer-events: none;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  padding: 0 12px;
+}
+#photoContainer {
+  position: fixed;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+#photo {
+  width: 220px;
+  max-width: 70vw;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.25);
+  opacity: 0;
+  transition: opacity 1s ease,
+              transform 1s ease;
+  transform: scale(0.9);
+}
+
+#photo.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  #photoContainer {
+    bottom: 180px;
+  }
+
+  #photo {
+    width: 170px;
+  }
+}
